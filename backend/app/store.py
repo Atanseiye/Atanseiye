@@ -26,5 +26,5 @@ def reset_demo():
     global PROFILE
     with LOCK:
         PROFILE=AccessibilityProfile(); ACCOUNT["balance"]=Decimal("82400.00"); CARD["frozen"]=False
-        INTENTS.clear(); PREVIEWS.clear(); EVENTS.clear(); IDEMPOTENCY.clear(); SUPPORT_CASES.clear(); FRAUD_REPORTS.clear()
+        INTENTS.clear(); PREVIEWS.clear(); EVENTS.clear(); IDEMPOTENCY.clear(); SUPPORT_CASES.clear(); FRAUD_REPORTS.clear(); ONBOARDING_SESSIONS.clear(); ACTIVATED_DEMO_CUSTOMERS.clear()
         TRANSACTIONS[:]=_seed_transactions()
