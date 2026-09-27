@@ -24,7 +24,7 @@ def reset_demo():store.reset_demo();return {"ok":True}
 @router.get("/profile",response_model=AccessibilityProfile)
 def get_profile():return store.PROFILE
 @router.put("/profile",response_model=AccessibilityProfile)
-def put_profile(profile):
+def put_profile(profile:AccessibilityProfile):
     store.PROFILE=profile;event("profile_updated",language=profile.primary_language,interaction_mode="voice" if profile.voice_guidance else "standard",metadata={"easy_banking":profile.easy_banking,"captions":profile.captions,"screen_reader":profile.screen_reader,"large_targets":profile.large_targets});return profile
 @router.get("/account")
 def account():return {**store.ACCOUNT,"number":"******"+store.ACCOUNT["number"][-4:]}
