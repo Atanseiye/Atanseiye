@@ -70,7 +70,7 @@ render.yaml            Render blueprint
 PYTHONPATH=backend pytest -q
 ```
 
-Current suite: **25 tests** covering multilingual intent handling, missing fields, confidence gating, transfer limits, insufficient funds, confirmation, authentication, idempotency, card security, fraud/support flows and analytics.
+Current suite: **36 tests** covering multilingual intent handling, transaction safety, registration stage enforcement, contact verification, accessible KYC privacy, public-demo data guards, security setup, consent, account activation, profile continuity, card security, fraud/support flows and analytics.
 
 The public onboarding demo is also intentionally synthetic: users are warned not to enter real BVN/NIN/passport or personal information, and the demo backend retains only the last four characters of the mock identity number.
 
