@@ -34,3 +34,18 @@ Switch to `/admin` and show language usage, interaction mode, journey signals, s
 ## Close
 
 "AccessFlow does not ask a bank to rebuild banking. It gives the bank one integration layer for accessibility, Nigerian-language interaction, safe orchestration and measurable inclusion."
+
+
+## Registration demo — before the three usage personas
+
+1. Open `/register` while signed out.
+2. Emphasize that language and accessibility controls are available **before any personal details are requested**.
+3. Choose a Nigerian language and enable voice guidance / captions / large controls / Easy Banking.
+4. Use the synthetic prefilled registration data.
+5. Demonstrate the OTP in both visible and spoken form.
+6. On KYC, show three equivalent paths instead of a mandatory visual-only selfie flow.
+7. Explain that the demo backend retains only the last four characters of the synthetic identity number.
+8. Configure PIN/passkey preference and explicitly state that voice control is not voice authentication.
+9. Review the plain-language consent summary.
+10. Activate the account and show that the accessibility profile is already present on the banking dashboard.
+11. Switch to `/admin` and show the onboarding funnel alongside post-login accessibility metrics.
