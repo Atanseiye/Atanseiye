@@ -191,9 +191,15 @@ def registration(session_id: str, details: RegistrationDetails):
     session = _session(session_id); _require(session, "registration")
     if not details.synthetic_data_acknowledged:
         raise HTTPException(400, "Acknowledge that the public demo must use synthetic data")
+    if not details.email.lower().endswith("@example.com"):
+        raise HTTPException(400, "Use the prefilled example.com email in this public demo")
+    if details.phone != "+2348000000000":
+        raise HTTPException(400, "Use the prefilled synthetic phone number in this public demo")
+    local, domain = details.email.split("@", 1)
     session["registration"] = {
         "first_name": details.first_name, "last_name": details.last_name,
-        "email": details.email, "phone": details.phone,
+        "email_masked": f"{local[:1]}***@{domain}",
+        "phone_masked": f"******{details.phone[-4:]}",
         "date_of_birth": details.date_of_birth.isoformat(),
     }
     session["stage"] = "contact_verification"
