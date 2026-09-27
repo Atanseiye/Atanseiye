@@ -90,3 +90,9 @@ def test_onboarding_is_visible_in_accessibility_analytics():
     analytics=client.get("/api/v1/analytics/summary").json()
     assert analytics["onboarding_completion_count"]==1
     assert analytics["onboarding_funnel"]["Account activated"]==1
+
+
+def test_public_demo_rejects_non_demo_contact_data():
+    sid=start(); accessibility(sid)
+    body={**REG,"email":"person@invalid.test"}
+    assert client.post(f"/api/v1/onboarding/{sid}/registration",json=body).status_code==400
