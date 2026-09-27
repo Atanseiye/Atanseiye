@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#091b2d">
+  <title>AccessFlow AI — Accessible Registration</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="onboarding-body">
+<a class="skip" href="#onboardingMain">Skip to registration</a>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">A</span><span>AccessFlow <b>AI</b></span></a>
+  <div class="top-actions">
+    <span class="demo-pill"><span class="dot"></span> Synthetic onboarding demo</span>
+    <a class="text-link" href="/">Already have an account?</a>
+    <button class="icon-btn" id="readStep" aria-label="Read this step aloud">🔊</button>
+  </div>
+</header>
+<main id="onboardingMain" class="onboarding-shell">
+  <aside class="onboarding-rail" aria-label="Registration progress">
+    <div class="rail-copy">
+      <p class="eyebrow">ACCESSIBLE FROM THE FIRST TAP</p>
+      <h1>Open an account <em>your way.</em></h1>
+      <p>Accessibility is available before we ask for your name, phone number, identity details or authentication setup.</p>
+    </div>
+    <ol id="stepRail" class="step-rail">
+      <li class="active" data-stage="accessibility"><span>1</span><div><b>Your experience</b><small>Language & accessibility</small></div></li>
+      <li data-stage="registration"><span>2</span><div><b>About you</b><small>Basic registration</small></div></li>
+      <li data-stage="contact_verification"><span>3</span><div><b>Verify contact</b><small>Accessible OTP</small></div></li>
+      <li data-stage="identity_verification"><span>4</span><div><b>Verify identity</b><small>Flexible KYC path</small></div></li>
+      <li data-stage="security_setup"><span>5</span><div><b>Secure account</b><small>PIN & device security</small></div></li>
+      <li data-stage="consent"><span>6</span><div><b>Review consent</b><small>Plain-language terms</small></div></li>
+      <li data-stage="ready_to_activate"><span>7</span><div><b>Final review</b><small>Nothing hidden</small></div></li>
+      <li data-stage="activated"><span>8</span><div><b>You're ready</b><small>Preferences carry forward</small></div></li>
+    </ol>
+    <div class="privacy-note"><strong>Public demo protection</strong><p>Do not enter real BVN, NIN, passport, phone or personal information. The supplied data is fictional.</p></div>
+  </aside>
+
+  <section class="onboarding-workspace">
+    <div class="onboarding-topline">
+      <div>
+        <p class="eyebrow" id="stepEyebrow">STEP 1 OF 8</p>
+        <h2 id="stepTitle">How would you like registration to work?</h2>
+        <p id="stepGuidance" class="lead-small" aria-live="polite">Choose your language and the interaction options that make registration easier.</p>
+      </div>
+      <div class="progress-ring" aria-label="Registration progress"><span id="progressValue">0%</span></div>
+    </div>
+
+    <div id="onboardingAlert" class="onboarding-alert hidden" role="alert"></div>
+
+    <section class="onboarding-step" data-panel="accessibility">
+      <div class="callout accessibility-callout"><span>✦</span><div><b>No account required for accessibility.</b><p>These settings apply immediately and will be carried into your bank account after activation.</p></div></div>
+      <fieldset>
+        <legend>Choose your language</legend>
+        <div id="onboardingLanguages" class="choice-grid"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Choose what helps you</legend>
+        <div class="toggle-grid" id="onboardingToggles">
+          <label><input type="checkbox" id="ob_voice_guidance"><span><b>Voice guidance</b><small>Hear instructions and confirmations</small></span></label>
+          <label><input type="checkbox" id="ob_screen_reader"><span><b>Screen-reader optimized</b><small>Clear structure and live updates</small></span></label>
+          <label><input type="checkbox" id="ob_captions"><span><b>Captions & text-first</b><small>Never depend on audio alone</small></span></label>
+          <label><input type="checkbox" id="ob_large_targets"><span><b>Large controls</b><small>Easier targets for touch and switch use</small></span></label>
+          <label><input type="checkbox" id="ob_large_text"><span><b>Large text</b><small>Increase interface text size</small></span></label>
+          <label><input type="checkbox" id="ob_high_contrast"><span><b>High contrast</b><small>Stronger visual separation</small></span></label>
+          <label><input type="checkbox" id="ob_easy_banking"><span><b>Easy Banking</b><small>Shorter, clearer financial language</small></span></label>
+          <label><input type="checkbox" id="ob_extended_timeout"><span><b>More time</b><small>Longer time for forms and verification</small></span></label>
+          <label><input type="checkbox" id="ob_reduced_motion"><span><b>Reduced motion</b><small>Minimize animation</small></span></label>
+          <label><input type="checkbox" id="ob_switch_control"><span><b>Keyboard / switch control</b><small>Operate without precise touch</small></span></label>
+        </div>
+      </fieldset>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="saveAccessibility">Continue to registration</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="registration">
+      <div class="callout"><span>⚠</span><div><b>Use synthetic data only.</b><p>This public demonstration is not connected to a real bank or identity provider.</p></div></div>
+      <div class="form-grid two">
+        <label>First name<input id="firstName" value="Kemi" autocomplete="off"></label>
+        <label>Last name<input id="lastName" value="Adebayo" autocomplete="off"></label>
+        <label>Email address<input id="email" type="email" value="kemi.demo@example.com" autocomplete="off"></label>
+        <label>Phone number<input id="phone" value="+2348000000000" autocomplete="off"></label>
+        <label>Date of birth<input id="dob" type="date" value="1994-06-12"></label>
+      </div>
+      <label class="consent-row"><input id="syntheticAck" type="checkbox" checked><span><b>I understand this is a public demo.</b><small>I will use only the fictional information provided here.</small></span></label>
+      <div class="onboarding-actions"><button class="secondary" data-back="accessibility">Back</button><button class="primary big" id="submitRegistration">Create registration</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="contact_verification">
+      <div class="verification-hero"><div class="verification-icon">✉</div><h3>Verify without relying on one sense.</h3><p>The code is presented visually and can be spoken aloud through voice guidance. Production banks can also support alternative accessible verification channels.</p></div>
+      <div class="demo-code"><span>DEMO VERIFICATION CODE</span><strong id="demoOtp">246810</strong><button class="secondary" id="speakOtp">Read code aloud</button></div>
+      <label class="single-input">Enter the 6-digit code<input id="otp" inputmode="numeric" maxlength="6" value="246810"></label>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="verifyContact">Verify contact</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="identity_verification">
+      <div class="section-head"><div><p class="eyebrow">ACCESSIBLE KYC</p><h3>Identity verification should not assume everyone can use a camera the same way.</h3></div></div>
+      <div class="form-grid two">
+        <label>Verification document<select id="identityMethod"><option value="nin">National Identification Number (demo)</option><option value="bvn">BVN (demo)</option><option value="passport">Passport (demo)</option></select></label>
+        <label>Demo identity number<input id="identityNumber" value="12345678901" autocomplete="off" aria-describedby="identityHelp"><small id="identityHelp">Only the last 4 characters are retained by this demo backend.</small></label>
+      </div>
+      <fieldset><legend>Choose a verification path</legend><div class="verification-options">
+        <label><input type="radio" name="verificationMode" value="guided_camera" checked><span><b>Guided camera verification</b><small>Audio, captions and clear positioning prompts. No silent visual-only instructions.</small></span></label>
+        <label><input type="radio" name="verificationMode" value="document_plus_review"><span><b>Document + review</b><small>Upload/capture identity evidence and use an alternate verification path.</small></span></label>
+        <label><input type="radio" name="verificationMode" value="accessible_assisted_review"><span><b>Accessible assisted review</b><small>Escalate to an accessible human verification flow without restarting registration.</small></span></label>
+      </div></fieldset>
+      <div class="guided-simulator"><div><p class="eyebrow">GUIDED CAPTURE SIMULATION</p><strong id="captureInstruction">Your face is centered. Hold still.</strong><p class="muted">In production, camera guidance can be spoken, captioned, vibrated and repeated.</p></div><button id="cycleCapture" class="secondary">Simulate next prompt</button></div>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="verifyIdentity">Complete demo identity check</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="security_setup">
+      <div class="callout"><span>🔐</span><div><b>Voice accessibility is not voice authentication.</b><p>AccessFlow may let a customer operate the interface by voice, but financial authentication remains bank-controlled.</p></div></div>
+      <div class="form-grid two"><label>Create PIN<input id="newPin" type="password" inputmode="numeric" maxlength="6" value="5826"></label><label>Confirm PIN<input id="confirmPin" type="password" inputmode="numeric" maxlength="6" value="5826"></label></div>
+      <div class="toggle-grid compact"><label><input type="checkbox" id="preferPasskey" checked><span><b>Prefer passkey / biometrics</b><small>Use phishing-resistant or device-bound authentication when available</small></span></label><label><input type="checkbox" id="allowBiometrics" checked><span><b>Allow device biometrics</b><small>Use the bank's existing device-security flow</small></span></label></div>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="saveSecurity">Secure my account</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="consent">
+      <div class="plain-summary"><p class="eyebrow">PLAIN-LANGUAGE SUMMARY</p><h3>What you are agreeing to</h3><p>We use your registration information to open and protect the account. Your accessibility preferences tell the bank <em>how</em> to present its services to you. They should not be used to infer a medical diagnosis or reduce your access to products.</p></div>
+      <div class="consent-stack">
+        <label><input id="termsConsent" type="checkbox"><span><b>I accept the demo account terms.</b><small>I can request the full detailed version.</small></span></label>
+        <label><input id="privacyConsent" type="checkbox"><span><b>I have reviewed the privacy notice.</b><small>I understand which information the bank processes during onboarding.</small></span></label>
+        <label><input id="accessConsent" type="checkbox"><span><b>Use my accessibility preferences to adapt my banking experience.</b><small>I can change these preferences later.</small></span></label>
+        <label><input id="plainConsent" type="checkbox"><span><b>I have read the plain-language summary.</b><small>The accessible summary does not remove my ability to view the full terms.</small></span></label>
+      </div>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="saveConsent">Continue to final review</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="ready_to_activate">
+      <div class="review-banner"><span>✓</span><div><h3>Required onboarding checks are complete.</h3><p>Review what will move into the active demo account.</p></div></div>
+      <div id="finalReview" class="review-grid"></div>
+      <div class="callout"><span>↗</span><div><b>Your accessibility profile follows you.</b><p>You should not need to configure the same needs again after sign-in.</p></div></div>
+      <div class="onboarding-actions"><span></span><button class="primary big" id="activateAccount">Open demo account</button></div>
+    </section>
+
+    <section class="onboarding-step hidden" data-panel="activated">
+      <div class="success-stage"><div class="success-mark">✓</div><p class="eyebrow">ACCOUNT ACTIVATED</p><h2>Welcome to accessible banking from day one.</h2><p>Your language and accessibility preferences have been carried into the customer experience.</p><div id="activatedDetails" class="activated-details"></div><div class="hero-actions"><a class="primary big button-link" href="/?onboarded=1">Enter my demo account</a><a class="secondary big button-link" href="/admin">See onboarding analytics</a></div></div>
+    </section>
+  </section>
+</main>
+<div id="onboardingToast" class="toast hidden" aria-live="polite"></div>
+<script src="/static/register.js"></script>
+</body>
+</html>
