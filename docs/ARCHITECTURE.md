@@ -33,3 +33,33 @@ Bank Adapter Interface
 ## Model provider boundary
 
 `NAtlasProvider.parse()` returns a strict `BankingIntent`. `MockNAtlasProvider` makes the public demo deterministic. `OpenAICompatNAtlasProvider` is the production-shaped integration point for a hosted N-ATLAS endpoint.
+
+
+## Accessible customer lifecycle
+
+AccessFlow starts before authentication:
+
+```text
+Anonymous visitor
+   ↓
+Choose language + accessibility preferences
+   ↓
+Registration details
+   ↓
+Accessible contact verification
+   ↓
+Flexible KYC path
+   ├── guided camera with audio/captions
+   ├── document + review
+   └── accessible assisted review
+   ↓
+Bank-controlled PIN / passkey / biometric setup
+   ↓
+Plain-language consent
+   ↓
+Explicit account activation
+   ↓
+Accessibility profile carried into authenticated banking
+```
+
+The server enforces each transition. The UI cannot simply skip KYC, authentication setup or consent.
