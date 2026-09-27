@@ -20,3 +20,7 @@ def admin(): return FileResponse(STATIC/"admin.html")
 
 @app.get("/register")
 def register(): return FileResponse(STATIC/"register.html")
+
+@app.get("/pitch", include_in_schema=False)
+def pitch():
+    return FileResponse(STATIC/"pitch.pdf", media_type="application/pdf", headers={"Content-Disposition": 'inline; filename="AccessFlow_AI_Zecathon_6_Pitch_Deck.pdf"', "Cache-Control": "public, max-age=3600"})
