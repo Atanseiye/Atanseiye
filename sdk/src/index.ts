@@ -3,6 +3,9 @@ export interface AccessibilityProfile{primary_language:LanguageCode;allow_code_s
 export interface AssistantRequest{text:string;language_hint?:LanguageCode;interaction_mode?:'text'|'voice'|'quick_action'|'switch'}
 export interface BankingIntent{intent_id:string;action:string;language:LanguageCode;code_switched:boolean;amount?:number|null;beneficiary_query?:string|null;transaction_query?:string|null;confidence:number;clarification?:string|null}
 export interface AssistantResponse{type:'message'|'transfer_preview'|'confirmation'|'error';intent:BankingIntent;message:string;data:Record<string,unknown>}
+export interface OnboardingSession{session_id:string;stage:string;progress:number;profile:AccessibilityProfile;guidance:string;registration?:Record<string,unknown>|null;contact_verified:boolean;identity?:Record<string,unknown>|null;security?:Record<string,unknown>|null;consent?:Record<string,unknown>|null;account?:Record<string,unknown>|null;next_url?:string}
+export interface RegistrationDetails{first_name:string;last_name:string;email:string;phone:string;date_of_birth:string;synthetic_data_acknowledged:boolean}
+export interface IdentityVerification{method:'nin'|'bvn'|'passport';identifier:string;verification_mode:'guided_camera'|'document_plus_review'|'accessible_assisted_review';accessibility_guidance?:boolean}
 export interface AccessFlowOptions{baseUrl:string;token?:string;fetchImpl?:typeof fetch;onEvent?:(name:string,payload?:unknown)=>void}
 
 /** Browser SDK intended to be embedded inside an existing bank application. It does not own customer identity or core banking state. */
@@ -11,6 +14,14 @@ export class AccessFlow{
   constructor(options:AccessFlowOptions|string,token?:string){if(typeof options==='string'){this.baseUrl=options.replace(/\/$/,'');this.token=token;this.f=fetch;return}this.baseUrl=options.baseUrl.replace(/\/$/,'');this.token=options.token;this.f=options.fetchImpl||fetch;this.onEvent=options.onEvent}
   private async request<T>(path:string,init:RequestInit={}):Promise<T>{const headers=new Headers(init.headers||{});headers.set('Content-Type','application/json');if(this.token)headers.set('Authorization',`Bearer ${this.token}`);const r=await this.f(`${this.baseUrl}/api/v1${path}`,{...init,headers});const data=await r.json().catch(()=>({detail:r.statusText}));if(!r.ok)throw new Error(data.detail||r.statusText);return data as T}
   private emit(n:string,p?:unknown){this.onEvent?.(n,p)}
+  startOnboarding(profile:Partial<AccessibilityProfile>={}){return this.request<OnboardingSession>('/onboarding/sessions',{method:'POST',body:JSON.stringify({profile})})}
+  saveOnboardingAccessibility(session_id:string,profile:AccessibilityProfile){return this.request<OnboardingSession>(`/onboarding/${session_id}/accessibility`,{method:'PUT',body:JSON.stringify(profile)})}
+  submitRegistration(session_id:string,details:RegistrationDetails){return this.request<OnboardingSession & {demo_code?:string}>(`/onboarding/${session_id}/registration`,{method:'POST',body:JSON.stringify(details)})}
+  verifyOnboardingContact(session_id:string,code:string){return this.request<OnboardingSession>(`/onboarding/${session_id}/contact/verify`,{method:'POST',body:JSON.stringify({code})})}
+  verifyOnboardingIdentity(session_id:string,identity:IdentityVerification){return this.request<OnboardingSession>(`/onboarding/${session_id}/identity`,{method:'POST',body:JSON.stringify(identity)})}
+  configureOnboardingSecurity(session_id:string,input:{pin:string;confirm_pin:string;prefer_passkey_or_biometrics:boolean;allow_device_biometrics:boolean}){return this.request<OnboardingSession>(`/onboarding/${session_id}/security`,{method:'POST',body:JSON.stringify(input)})}
+  saveOnboardingConsent(session_id:string,input:{terms_accepted:boolean;privacy_notice_accepted:boolean;accessibility_preferences_accepted:boolean;plain_language_summary_read:boolean}){return this.request<OnboardingSession>(`/onboarding/${session_id}/consent`,{method:'POST',body:JSON.stringify(input)})}
+  activateOnboarding(session_id:string){return this.request<OnboardingSession>(`/onboarding/${session_id}/activate`,{method:'POST',body:JSON.stringify({confirmed:true})})}
   getLanguages(){return this.request<Array<{code:LanguageCode;name:string;native:string}>>('/languages')}
   getProfile(){return this.request<AccessibilityProfile>('/profile')}
   async saveProfile(profile:AccessibilityProfile){const out=await this.request<AccessibilityProfile>('/profile',{method:'PUT',body:JSON.stringify(profile)});this.emit('profile_saved',out);return out}
