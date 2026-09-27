@@ -79,4 +79,14 @@ def analytics_summary():
             journeys[j]["events"]+=1
             if str(e.get("event","")).endswith("completed"):journeys[j]["completed"]+=1
             if "failed" in str(e.get("event","")):journeys[j]["failed"]+=1
-    return {"total_events":len(store.EVENTS),"languages":dict(languages),"events":dict(events),"interaction_modes":dict(modes),"journeys":dict(journeys),"transfer_completion_count":events.get("transfer_completed",0),"transfer_failure_count":events.get("transfer_failed",0),"support_cases":len(store.SUPPORT_CASES),"fraud_reports":len(store.FRAUD_REPORTS),"card_frozen":store.CARD["frozen"]}
+    onboarding_funnel={
+        "Started": events.get("onboarding_started",0),
+        "Accessibility configured": events.get("onboarding_accessibility_configured",0),
+        "Registration details": events.get("onboarding_registration_completed",0),
+        "Contact verified": events.get("onboarding_contact_verified",0),
+        "Identity verified": events.get("onboarding_identity_verified",0),
+        "Security configured": events.get("onboarding_security_configured",0),
+        "Consent completed": events.get("onboarding_consent_completed",0),
+        "Account activated": events.get("onboarding_completed",0),
+    }
+    return {"total_events":len(store.EVENTS),"languages":dict(languages),"events":dict(events),"interaction_modes":dict(modes),"journeys":dict(journeys),"transfer_completion_count":events.get("transfer_completed",0),"transfer_failure_count":events.get("transfer_failed",0),"onboarding_started_count":events.get("onboarding_started",0),"onboarding_completion_count":events.get("onboarding_completed",0),"onboarding_funnel":onboarding_funnel,"support_cases":len(store.SUPPORT_CASES),"fraud_reports":len(store.FRAUD_REPORTS),"card_frozen":store.CARD["frozen"]}
