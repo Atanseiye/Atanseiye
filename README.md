@@ -7,6 +7,7 @@ AccessFlow is a competition-grade SDK/platform and demonstration bank for Zecath
 ## What the demo proves
 
 - English, Yorùbá, Hausa, Igbo and Nigerian Pidgin interaction model
+- accessible registration before login: language/preferences → registration → contact verification → flexible KYC → security → consent → activation
 - customer-controlled accessibility profiles rather than inferred disability labels
 - voice/text banking and code-switch-aware intent routing
 - safe transfers: intent → bank resolution → immutable preview → explicit confirmation → authentication → execution
@@ -21,6 +22,7 @@ N-ATLAS is **not** the ledger and cannot move money. The language layer can only
 
 ## Live demo
 
+- Accessible registration: https://accessflow-ai-demo.onrender.com/register
 - Customer: https://accessflow-ai-demo.onrender.com
 - Accessibility Intelligence: https://accessflow-ai-demo.onrender.com/admin
 - OpenAPI: https://accessflow-ai-demo.onrender.com/docs
@@ -69,6 +71,8 @@ PYTHONPATH=backend pytest -q
 ```
 
 Current suite: **25 tests** covering multilingual intent handling, missing fields, confidence gating, transfer limits, insufficient funds, confirmation, authentication, idempotency, card security, fraud/support flows and analytics.
+
+The public onboarding demo is also intentionally synthetic: users are warned not to enter real BVN/NIN/passport or personal information, and the demo backend retains only the last four characters of the mock identity number.
 
 ## Production path
 
