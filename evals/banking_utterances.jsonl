@@ -1,0 +1,15 @@
+{"language":"en-NG","text":"Check my balance","action":"get_balance"}
+{"language":"en-NG","text":"Send 15k to Chinedu","action":"transfer_money","amount":15000,"beneficiary":"chinedu"}
+{"language":"en-NG","text":"Show my recent transactions","action":"recent_transactions"}
+{"language":"en-NG","text":"Freeze my card","action":"freeze_card"}
+{"language":"en-NG","text":"I need customer support","action":"contact_support"}
+{"language":"pcm-NG","text":"Abeg check my balance","action":"get_balance"}
+{"language":"pcm-NG","text":"Abeg send 5k give Chinedu","action":"transfer_money","amount":5000,"beneficiary":"chinedu"}
+{"language":"pcm-NG","text":"Why my transaction still dey pending?","action":"check_transfer_status"}
+{"language":"pcm-NG","text":"I need customer care abeg","action":"contact_support"}
+{"language":"yo-NG","text":"Mo fẹ transfer 10k si Adewale","action":"transfer_money","amount":10000,"beneficiary":"adewale"}
+{"language":"yo-NG","text":"Mo fẹ wo balance owo mi","action":"get_balance"}
+{"language":"ha-NG","text":"Aika 5k zuwa Amina","action":"transfer_money","amount":5000,"beneficiary":"amina"}
+{"language":"ha-NG","text":"Duba balance kudi na","action":"get_balance"}
+{"language":"ig-NG","text":"Zipu 5k nye Amina","action":"transfer_money","amount":5000,"beneficiary":"amina"}
+{"language":"ig-NG","text":"Lee balance ego m","action":"get_balance"}
