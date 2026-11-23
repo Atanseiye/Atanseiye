@@ -8,7 +8,7 @@ Building developer infrastructure for intelligent, interoperable, and trustworth
 
 [![Website](https://img.shields.io/badge/EnergyChain-Website-0A66C2?style=for-the-badge)](https://energychain.app)
 [![GitHub](https://img.shields.io/badge/GitHub-EnergyChain-181717?style=for-the-badge&logo=github)](https://github.com/energychainai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/kolade-odunope-atanseiye-830b53185/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/koladeao/)
 
 </div>
 
@@ -69,6 +69,6 @@ Building developer infrastructure for intelligent, interoperable, and trustworth
 
 **Making energy systems programmable.**
 
-[EnergyChain](https://energychain.app) · [Open-source SDK](https://github.com/energychainai/energychain) · [LinkedIn](https://www.linkedin.com/in/kolade-odunope-atanseiye-830b53185/)
+[EnergyChain](https://energychain.app) · [Open-source SDK](https://github.com/energychainai/energychain) · [LinkedIn](https://www.linkedin.com/in/koladeao/)
 
 </div>
